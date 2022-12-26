@@ -1,4 +1,4 @@
-Nome do projeto: automacaoSubmarino
+Nome do projeto: automacaoExtra.
 
 Esse projeto é destinado para a minha primeira avaliação de automação web realizada pela minha trilha de treinamento;
 
