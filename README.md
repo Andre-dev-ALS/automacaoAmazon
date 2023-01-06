@@ -1,4 +1,4 @@
-Nome do projeto: automacaoExtra.
+Nome do projeto: automacaoAmazon.
 
 Esse projeto é destinado para a minha primeira avaliação de automação web realizada pela minha trilha de treinamento;
 

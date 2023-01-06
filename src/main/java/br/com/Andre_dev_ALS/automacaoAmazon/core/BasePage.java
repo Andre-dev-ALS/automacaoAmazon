@@ -1,4 +1,6 @@
-package br.com.Andre_dev_ALS.automacaoSubmarino.core;
+package br.com.Andre_dev_ALS.automacaoAmazon.core;
+
+import static br.com.Andre_dev_ALS.automacaoAmazon.core.DriverFactory.getDriver;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,7 +10,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
-import static br.com.Andre_dev_ALS.automacaoSubmarino.core.DriverFactory.getDriver;
 
 public class BasePage {
 
@@ -158,6 +159,7 @@ public class BasePage {
 		Alert alert = getDriver().switchTo().alert();
 		String valor = alert.getText();
 		alert.dismiss();
+
 		return valor;
 
 	}
@@ -168,18 +170,8 @@ public class BasePage {
 		alert.accept();
 	}
 
-	/********* Frames e Janelas ************/
-
-	public void entrarFrame(String id) {
-		getDriver().switchTo().frame(id);
-	}
-
-	public void sairFrame() {
-		getDriver().switchTo().defaultContent();
-	}
-
-	public void trocarJanela(String id) {
-		getDriver().switchTo().window(id);
+	public void trocarJanela(int numeroJanela) {
+		getDriver().switchTo().window((String) getDriver().getWindowHandles().toArray()[numeroJanela]);
 	}
 
 	/************** JS *********************/
