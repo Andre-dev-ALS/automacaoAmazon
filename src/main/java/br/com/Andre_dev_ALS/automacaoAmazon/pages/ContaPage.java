@@ -5,6 +5,9 @@ import static br.com.Andre_dev_ALS.automacaoAmazon.core.DriverFactory.getDriver;
 import java.time.Duration;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -21,11 +24,9 @@ public class ContaPage extends BasePage {
 	public void setEmail() {
 		By emailPath = By.xpath("//input[@id = 'ap_email']");
 		try {
-
 			wait.until(ExpectedConditions.presenceOfElementLocated(emailPath));
 			escrever(emailPath, "emailparatestesautomacao@gmail.com");
 		} catch (Exception e) {
-
 			System.out.println(e.getLocalizedMessage());
 		}
 	}
@@ -39,18 +40,38 @@ public class ContaPage extends BasePage {
 			wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//input[@id = 'ap_password']")));
 			escrever(By.xpath("//input[@id = 'ap_password']"), "senhaautomacao");
 		} catch (Exception e) {
-			// TODO: handle exception
+			System.out.println(e.getLocalizedMessage());
 		}
 	}
 
 	public void clicarBotaoFazerLogin() {
 		clicarBotao(By.xpath("//input[@id = 'signInSubmit']"));
 	}
-	
-	public String obterTextoDeUsuarioConectado() {
 
+	public String obterTextoDeUsuarioConectado() {
 		return getDriver().findElement(By.xpath("//*[@id=\"nav-link-accountList-nav-line-1\"]")).getText();
 	}
 
-	
+	public void clicarBotaoSair() {
+		try {
+			WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(20));
+
+			wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id= 'nav-link-accountList']/div")));
+			Actions acao = new Actions(getDriver());
+			WebElement opcoesAmazon = getDriver().findElement(By.xpath("//*[@id= 'nav-link-accountList']/div"));
+			acao.moveToElement(opcoesAmazon).perform();
+			WebElement sairPath = getDriver().findElement(By.xpath("//*[@id=\"nav-item-signout\"]/span"));
+			acao.moveToElement(sairPath).perform();
+			acao.click(sairPath).perform();
+		} catch (NoSuchElementException e) {
+			System.out.println(e.getMessage());
+
+		}
+
+	}
+
+	public String obterMensagemParaFazerLogin() {
+		return getDriver().findElement(By.tagName("h1")).getText();
+	}
+
 }
