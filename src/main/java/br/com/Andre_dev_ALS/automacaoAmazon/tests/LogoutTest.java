@@ -17,6 +17,6 @@ public void id002FazerLogout() {
 	logout.clicarBotaoSair();
 	
 	
-	assertEquals("Fazer login", logout.obterMensagemParaLogar());
+	assertEquals("Fazer login", logout.obterMensagemParaFazerLogin());
 }
 }
