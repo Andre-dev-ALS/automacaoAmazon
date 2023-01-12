@@ -13,7 +13,7 @@ public class ProcurarProduto extends BaseTest {
 
 	@Test
 	public void id003ProcurarProdutoExistente() {
-		produto.FazerProcuraDoProduto();
+		produto.FazerProcuraDoProduto("bicicleta aro 29");
 		produto.clicarBotaoProcurar();
 		List<String> nomeProdutos = produto.obterNomeProdutoEncontrado();
 
@@ -21,5 +21,12 @@ public class ProcurarProduto extends BaseTest {
 
 			Assert.assertTrue(nome.startsWith("bicicleta aro 29".toLowerCase()));
 		}
+	}
+
+	@Test
+	public void id004ProcurarProdutoInexistente() {
+		produto.FazerProcuraDoProduto("___fdfsdfadsfcv+ITEM_INEXISTENTE_012345@@@))+23453");
+		produto.clicarBotaoProcurar();
+		Assert.assertTrue(produto.obterMensagemDeProdutoInexistente().startsWith("Nenhum resultado para "));
 	}
 }

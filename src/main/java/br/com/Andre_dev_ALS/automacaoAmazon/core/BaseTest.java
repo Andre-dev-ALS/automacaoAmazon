@@ -34,5 +34,6 @@ menu.clicarOpicaoFazerLogin();
 			killDriver();
 			System.out.println("driver fechado");
 		}
+		teclado.close();
 	}
 }
