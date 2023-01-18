@@ -8,7 +8,7 @@ import org.junit.Test;
 import br.com.Andre_dev_ALS.automacaoAmazon.core.BaseTest;
 import br.com.Andre_dev_ALS.automacaoAmazon.pages.ProdutoPage;
 
-public class ProcurarProduto extends BaseTest {
+public class ProcurarProdutoTest extends BaseTest {
 	ProdutoPage produto = new ProdutoPage();
 
 	@Test
