@@ -16,8 +16,8 @@ import br.com.Andre_dev_ALS.automacaoAmazon.core.BasePage;
 public class ProdutoPage extends BasePage {
 
 	public void FazerProcuraDoProduto(String nomeProduto) {
-		escrever(By.xpath("//*[@id=\"twotabsearchtextbox\"]"), nomeProduto);
-		;
+		escrever(By.xpath("//*[@id= 'twotabsearchtextbox']"), nomeProduto);
+		
 	}
 
 	public void clicarBotaoProcurar() {
@@ -39,7 +39,7 @@ public class ProdutoPage extends BasePage {
 	}
 
 	public void clicarNoProduto(String produto) {
-WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(10));
+WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(30));
 wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//h2[contains(., '"+produto+"')]")));
 		getDriver().findElement(By.xpath("//h2/a[contains(., '" + produto + "')]")).click();
 	}

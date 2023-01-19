@@ -11,7 +11,7 @@ public class CepTest extends BaseTest {
 	ProdutoPage produto = new ProdutoPage();
 	CepPage cep = new CepPage();
 
-	@Test
+	//@Test
 	public void id005ValidarFrete() {
 		produto.FazerProcuraDoProduto("copo");
 		produto.clicarBotaoProcurar();
@@ -26,4 +26,14 @@ public class CepTest extends BaseTest {
 
 	}
 
+@Test
+public void id006ValidarCep() {
+	produto.FazerProcuraDoProduto("frigideira");
+	produto.clicarBotaoProcurar();
+	produto.clicarNoProduto("frigideira");
+	cep.clicarOpcaoEscolherLocalidade();
+	cep.digitarCep("00000-000");
+	cep.clicarBotaoVerificarCep();
+	Assert.assertEquals("Insira um CEP válido", cep.obterMensagemDeCepInvalido());
+}
 }

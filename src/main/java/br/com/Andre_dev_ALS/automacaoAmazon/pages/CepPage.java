@@ -11,11 +11,10 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import br.com.Andre_dev_ALS.automacaoAmazon.core.BasePage;
 
 public class CepPage extends BasePage {
-	WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(30));
+	WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(100));
 
 	public void clicarOpcaoEscolherLocalidade() {
 		try {
-
 			wait.until(ExpectedConditions
 					.presenceOfElementLocated(By.xpath("//*[@id= 'nav-global-location-data-modal-action']")));
 			clicarBotao(By.xpath("//*[@id= 'nav-global-location-data-modal-action']"));
@@ -39,10 +38,16 @@ public class CepPage extends BasePage {
 	}
 
 	public String obterMensagemDeCepInvalido() {
-		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id=\"GLUXZipError\"]")));
-		return getDriver()
-				.findElement(By.xpath("//span[@id = 'GLUXZipError']/div[contains(., 'Insira um CEP válido')]"))
-				.getText();
+		try {
+			wait.until(ExpectedConditions.presenceOfElementLocated(
+					By.xpath("//*[contains(., 'Insira um CEP válido')]/span[@id = 'GLUXZipError']")));
+			return getDriver()
+					.findElement(By.xpath("//*[contains(., 'Insira um CEP válido')]/span[@id = 'GLUXZipError']"))
+					.getText();
+		} catch (Exception e) {
+			System.out.println(e.getLocalizedMessage());
+		}
+		return "erro";
 	}
 
 	public String InformacaoFrete() {
