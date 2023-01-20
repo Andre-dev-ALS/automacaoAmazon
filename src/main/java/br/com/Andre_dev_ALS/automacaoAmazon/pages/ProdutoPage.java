@@ -14,6 +14,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import br.com.Andre_dev_ALS.automacaoAmazon.core.BasePage;
 
 public class ProdutoPage extends BasePage {
+	WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(100));
 
 	public void FazerProcuraDoProduto(String nomeProduto) {
 		escrever(By.xpath("//*[@id= 'twotabsearchtextbox']"), nomeProduto);
@@ -39,9 +40,13 @@ public class ProdutoPage extends BasePage {
 	}
 
 	public void clicarNoProduto(String produto) {
-WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(30));
 wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//h2[contains(., '"+produto+"')]")));
 		getDriver().findElement(By.xpath("//h2/a[contains(., '" + produto + "')]")).click();
 	}
-
+public String obterNomeDoProdutoClicado(String produto) {
+	
+	
+return getDriver().getTitle();
+	
+}
 }

@@ -8,8 +8,8 @@ import br.com.Andre_dev_ALS.automacaoAmazon.pages.CepPage;
 import br.com.Andre_dev_ALS.automacaoAmazon.pages.ProdutoPage;
 
 public class CepTest extends BaseTest {
-	ProdutoPage produto = new ProdutoPage();
-	CepPage cep = new CepPage();
+	private ProdutoPage produto = new ProdutoPage();
+	private CepPage cep = new CepPage();
 
 	//@Test
 	public void id005ValidarFrete() {
@@ -28,9 +28,9 @@ public class CepTest extends BaseTest {
 
 @Test
 public void id006ValidarCep() {
-	produto.FazerProcuraDoProduto("frigideira");
+	produto.FazerProcuraDoProduto("copo");
 	produto.clicarBotaoProcurar();
-	produto.clicarNoProduto("frigideira");
+	produto.clicarNoProduto("copo");
 	cep.clicarOpcaoEscolherLocalidade();
 	cep.digitarCep("00000-000");
 	cep.clicarBotaoVerificarCep();
