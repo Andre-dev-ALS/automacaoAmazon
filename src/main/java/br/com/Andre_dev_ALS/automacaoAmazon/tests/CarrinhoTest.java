@@ -24,6 +24,16 @@ public class CarrinhoTest extends BaseTest {
 		String nomeDoProduto = nomeDoProdutoNoCarrinho[0] + ' ' + nomeDoProdutoNoCarrinho[1];
 
 		Assert.assertTrue(carrinho.confirmarProdutoNoCarrinho().startsWith(nomeDoProduto));
-
 	}
+	
+@Test
+public void id008DobrarAquantidadeDeProdutosNoCarrinhoEvalidarPreço() {
+	produto.FazerProcuraDoProduto("frigideira");
+	produto.clicarBotaoProcurar();
+	produto.clicarNoProduto("Frigideira");
+	carrinho.adicionarProdutoNoCarrinho();
+	carrinho.clicarNoCarrinho();
+
+}
+
 }
