@@ -33,7 +33,10 @@ public void id008DobrarAquantidadeDeProdutosNoCarrinhoEvalidarPreço() {
 	produto.clicarNoProduto("Frigideira");
 	carrinho.adicionarProdutoNoCarrinho();
 	carrinho.clicarNoCarrinho();
-
+	carrinho.mudarQuantidadeDeItensNoCarrinho("2");
+	
+System.out.println(carrinho.obterPrecoDoProduto());
+System.out.println(carrinho.obterPrecoTotalDaCompra());
 }
 
 }

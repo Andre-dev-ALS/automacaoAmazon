@@ -21,7 +21,7 @@ menu.clicarOpicaoFazerLogin();
 		login.clicarBotaoFazerLogin();
 	}
 
-	 //@After
+	 @After
 
 	public void finalizar() {
 			killDriver();

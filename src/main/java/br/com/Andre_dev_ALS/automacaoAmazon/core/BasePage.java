@@ -50,6 +50,14 @@ public class BasePage {
 		return getDriver().findElement(By.id(id)).isSelected();
 	}
 
+// caixa de seleção 
+
+	public void selecionar(By by, String valor) {
+		WebElement elemento = getDriver().findElement(by);
+		Select selecao = new Select(elemento);
+selecao.selectByVisibleText(valor);
+	}
+
 	/********* Combo ************/
 
 	public void selecionarCombo(String id, String valor) {

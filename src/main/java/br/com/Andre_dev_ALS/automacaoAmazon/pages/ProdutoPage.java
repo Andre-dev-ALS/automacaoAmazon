@@ -18,7 +18,7 @@ public class ProdutoPage extends BasePage {
 
 	public void FazerProcuraDoProduto(String nomeProduto) {
 		escrever(By.xpath("//*[@id= 'twotabsearchtextbox']"), nomeProduto);
-		
+
 	}
 
 	public void clicarBotaoProcurar() {
@@ -40,13 +40,14 @@ public class ProdutoPage extends BasePage {
 	}
 
 	public void clicarNoProduto(String produto) {
-wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//h2[contains(., '"+produto+"')]")));
+		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//h2[contains(., '" + produto + "')]")));
 		getDriver().findElement(By.xpath("//h2/a[contains(., '" + produto + "')]")).click();
 	}
-public String obterNomeDoProdutoClicado(String produto) {
-	
-	
-return getDriver().getTitle();
-	
-}
+
+	public String obterNomeDoProdutoClicado(String produto) {
+
+		return getDriver().getTitle();
+
+	}
+
 }
