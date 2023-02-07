@@ -37,6 +37,8 @@ public void id008DobrarAquantidadeDeProdutosNoCarrinhoEvalidarPreço() {
 	
 System.out.println(carrinho.obterPrecoDoProduto());
 System.out.println(carrinho.obterPrecoTotalDaCompra());
+
+Assert.assertTrue(carrinho.obterPrecoDoProduto() * 2 == carrinho.obterPrecoTotalDaCompra());
 }
 
 }

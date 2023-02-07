@@ -29,10 +29,12 @@ public class CarrinhoPage extends BasePage {
 		clicarBotao(By.xpath("//*[@id=\"nav-cart\"]"));
 	}
 
-	public String obterPrecoDoProduto() {
-		String precoProduto = getDriver().findElement(By.xpath(
+	public float obterPrecoDoProduto() {
+		String stringPrecoProduto = getDriver().findElement(By.xpath(
 				"//span[@class = 'a-size-medium a-color-base sc-price sc-white-space-nowrap sc-product-price a-text-bold']"))
-				.getText();
+				.getText().replace(",", ".").replace("R$", " ");
+		
+		float precoProduto = Float.parseFloat(stringPrecoProduto);
 		return precoProduto;
 
 		// lista com os possíveis elementos que irei usar no projeto
@@ -57,10 +59,16 @@ public class CarrinhoPage extends BasePage {
 		return quantidade;
 	}
 
-	public String obterPrecoTotalDaCompra() {
-		getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(30) );
-		String precoTotal = getDriver().findElement(By.xpath("//*[@id = 'sc-subtotal-label-activecart']")).getText();
-		getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(0) );
+	public float obterPrecoTotalDaCompra() {
+		try {
+			Thread.sleep(8000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		String subTotal[]   = getDriver().findElement(By.xpath("//*[@id = 'sc-subtotal-label-activecart']/..")).getText().split(" ");
+		 String stringPrecoTotal = subTotal[4].replace(",", ".");
+		 float precoTotal = Float.parseFloat(stringPrecoTotal); 
 		return precoTotal;
 	}
 }
