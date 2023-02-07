@@ -71,4 +71,11 @@ public class CarrinhoPage extends BasePage {
 		 float precoTotal = Float.parseFloat(stringPrecoTotal); 
 		return precoTotal;
 	}
+	
+	public String obterQuantidadeDeProdutosNoCarrinho() {
+
+		return getDriver().findElement(By.xpath("//*[@id = 'sc-subtotal-label-activecart']")).getText();
+		
+	}
+	
 }

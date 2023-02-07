@@ -40,5 +40,20 @@ System.out.println(carrinho.obterPrecoTotalDaCompra());
 
 Assert.assertTrue(carrinho.obterPrecoDoProduto() * 2 == carrinho.obterPrecoTotalDaCompra());
 }
+@Test
+public void id009AdicionarMúltiplosItensAoCarrinho() {
+	produto.FazerProcuraDoProduto("fogão");
+	produto.clicarBotaoProcurar();
+	produto.clicarNoProduto("Fogão");
+	carrinho.adicionarProdutoNoCarrinho();
+	
+	produto.FazerProcuraDoProduto("geladeira");
+	produto.clicarBotaoProcurar();
+	produto.clicarNoProduto("Geladeira");
+	carrinho.adicionarProdutoNoCarrinho();
+	carrinho.clicarNoCarrinho();
 
+Assert.assertEquals("Subtotal (2 itens):", carrinho.obterQuantidadeDeProdutosNoCarrinho());
+	
+}
 }
