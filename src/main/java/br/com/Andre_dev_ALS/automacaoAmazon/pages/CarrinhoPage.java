@@ -33,7 +33,7 @@ public class CarrinhoPage extends BasePage {
 		String stringPrecoProduto = getDriver().findElement(By.xpath(
 				"//span[@class = 'a-size-medium a-color-base sc-price sc-white-space-nowrap sc-product-price a-text-bold']"))
 				.getText().replace(",", ".").replace("R$", " ");
-		
+
 		float precoProduto = Float.parseFloat(stringPrecoProduto);
 		return precoProduto;
 
@@ -66,16 +66,28 @@ public class CarrinhoPage extends BasePage {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		String subTotal[]   = getDriver().findElement(By.xpath("//*[@id = 'sc-subtotal-label-activecart']/..")).getText().split(" ");
-		 String stringPrecoTotal = subTotal[4].replace(",", ".");
-		 float precoTotal = Float.parseFloat(stringPrecoTotal); 
+		String subTotal[] = getDriver().findElement(By.xpath("//*[@id = 'sc-subtotal-label-activecart']/..")).getText()
+				.split(" ");
+		String stringPrecoTotal = subTotal[4].replace(",", ".");
+		float precoTotal = Float.parseFloat(stringPrecoTotal);
 		return precoTotal;
 	}
-	
+
 	public String obterQuantidadeDeProdutosNoCarrinho() {
 
 		return getDriver().findElement(By.xpath("//*[@id = 'sc-subtotal-label-activecart']")).getText();
-		
 	}
-	
+
+	public void clicarBotaoExcluirProduto() {
+		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//input[@value = 'Excluir']")));
+		clicarBotao(By.xpath("//input[@value = 'Excluir']"));
+	}
+
+	public String obterMensagemDeCarrinhoVazio() {
+		wait.until(ExpectedConditions.presenceOfElementLocated(
+				By.xpath("//h1[contains(., 'Seu carrinho de compras da Amazon está vazio.')]")));
+		return getDriver().findElement(By.xpath("//h1[contains(., 'Seu carrinho de compras da Amazon está vazio.')]"))
+				.getText();
+
+	}
 }

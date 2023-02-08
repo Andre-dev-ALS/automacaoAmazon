@@ -25,35 +25,46 @@ public class CarrinhoTest extends BaseTest {
 
 		Assert.assertTrue(carrinho.confirmarProdutoNoCarrinho().startsWith(nomeDoProduto));
 	}
-	
-@Test
-public void id008DobrarAquantidadeDeProdutosNoCarrinhoEvalidarPreço() {
-	produto.FazerProcuraDoProduto("frigideira");
-	produto.clicarBotaoProcurar();
-	produto.clicarNoProduto("Frigideira");
-	carrinho.adicionarProdutoNoCarrinho();
-	carrinho.clicarNoCarrinho();
-	carrinho.mudarQuantidadeDeItensNoCarrinho("2");
-	
-System.out.println(carrinho.obterPrecoDoProduto());
-System.out.println(carrinho.obterPrecoTotalDaCompra());
 
-Assert.assertTrue(carrinho.obterPrecoDoProduto() * 2 == carrinho.obterPrecoTotalDaCompra());
-}
-@Test
-public void id009AdicionarMúltiplosItensAoCarrinho() {
-	produto.FazerProcuraDoProduto("fogão");
-	produto.clicarBotaoProcurar();
-	produto.clicarNoProduto("Fogão");
-	carrinho.adicionarProdutoNoCarrinho();
-	
-	produto.FazerProcuraDoProduto("geladeira");
-	produto.clicarBotaoProcurar();
-	produto.clicarNoProduto("Geladeira");
-	carrinho.adicionarProdutoNoCarrinho();
-	carrinho.clicarNoCarrinho();
+	@Test
+	public void id008DobrarAquantidadeDeProdutosNoCarrinhoEvalidarPreço() {
+		produto.FazerProcuraDoProduto("frigideira");
+		produto.clicarBotaoProcurar();
+		produto.clicarNoProduto("Frigideira");
+		carrinho.adicionarProdutoNoCarrinho();
+		carrinho.clicarNoCarrinho();
+		carrinho.mudarQuantidadeDeItensNoCarrinho("2");
 
-Assert.assertEquals("Subtotal (2 itens):", carrinho.obterQuantidadeDeProdutosNoCarrinho());
-	
-}
+		System.out.println(carrinho.obterPrecoDoProduto());
+		System.out.println(carrinho.obterPrecoTotalDaCompra());
+
+		Assert.assertTrue(carrinho.obterPrecoDoProduto() * 2 == carrinho.obterPrecoTotalDaCompra());
+	}
+
+	@Test
+	public void id009AdicionarMúltiplosItensAoCarrinho() {
+		produto.FazerProcuraDoProduto("fogão");
+		produto.clicarBotaoProcurar();
+		produto.clicarNoProduto("Fogão");
+		carrinho.adicionarProdutoNoCarrinho();
+		produto.FazerProcuraDoProduto("geladeira");
+		produto.clicarBotaoProcurar();
+		produto.clicarNoProduto("Geladeira");
+		carrinho.adicionarProdutoNoCarrinho();
+		carrinho.clicarNoCarrinho();
+
+		Assert.assertEquals("Subtotal (2 itens):", carrinho.obterQuantidadeDeProdutosNoCarrinho());
+	}
+
+	@Test
+	public void id010ValidarMensagemDeCarrinhoVazio() {
+		produto.FazerProcuraDoProduto("garrafa");
+		produto.clicarBotaoProcurar();
+		produto.clicarNoProduto("Garrafa");
+		carrinho.adicionarProdutoNoCarrinho();
+		carrinho.clicarNoCarrinho();
+		carrinho.clicarBotaoExcluirProduto();
+		Assert.assertEquals("Seu carrinho de compras da Amazon está vazio.", carrinho.obterMensagemDeCarrinhoVazio());
+	}
+
 }
