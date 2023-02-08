@@ -74,7 +74,7 @@ public class CarrinhoPage extends BasePage {
 	}
 
 	public String obterQuantidadeDeProdutosNoCarrinho() {
-
+wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id = 'sc-subtotal-label-activecart']")));
 		return getDriver().findElement(By.xpath("//*[@id = 'sc-subtotal-label-activecart']")).getText();
 	}
 

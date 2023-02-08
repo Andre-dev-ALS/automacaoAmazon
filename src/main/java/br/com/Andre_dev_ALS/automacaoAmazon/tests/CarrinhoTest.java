@@ -67,4 +67,21 @@ public class CarrinhoTest extends BaseTest {
 		Assert.assertEquals("Seu carrinho de compras da Amazon está vazio.", carrinho.obterMensagemDeCarrinhoVazio());
 	}
 
+	@Test
+
+	public void id011RemoverUmItemDoCarrinho() {
+		produto.FazerProcuraDoProduto("fogão");
+		produto.clicarBotaoProcurar();
+		produto.clicarNoProduto("Fogão");
+		carrinho.adicionarProdutoNoCarrinho();
+		produto.FazerProcuraDoProduto("geladeira");
+		produto.clicarBotaoProcurar();
+		produto.clicarNoProduto("Geladeira");
+		carrinho.adicionarProdutoNoCarrinho();
+		carrinho.clicarNoCarrinho();
+		carrinho.clicarBotaoExcluirProduto();
+		System.out.println(carrinho.obterQuantidadeDeProdutosNoCarrinho());
+
+		Assert.assertEquals("Subtotal (1 item):", carrinho.obterQuantidadeDeProdutosNoCarrinho());
+	}
 }
