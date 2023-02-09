@@ -23,7 +23,7 @@ public class BaseTest {
 		login.clicarBotaoFazerLogin();
 	}
 
-	@After
+	//@After
 
 	public void finalizar() {
 		killDriver();
