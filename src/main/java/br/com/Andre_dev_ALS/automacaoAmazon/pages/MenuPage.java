@@ -46,15 +46,15 @@ public class MenuPage extends BasePage {
 	}
 
 public void filtrarSubCategoriaPor(String nomeSubCategoria) {
-	WebElement nomeCategoria = getDriver().findElement(By.xpath("//a[@class = 'hmenu-item' and contains(., 'Notebooks')]")); 
-	wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//a[@class = 'hmenu-item' and contains(., 'Notebooks')]")));
+	WebElement nomeCategoria = getDriver().findElement(By.xpath("//a[@class = 'hmenu-item' and contains(., '"+nomeSubCategoria+"')]")); 
+	wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//a[@class = 'hmenu-item' and contains(., '"+nomeSubCategoria+"')]")));
 	
 	
-	//executarJS("window.scrollBy(0, arguments[0])", nomeCategoria.getLocation().y);
+	executarJS("window.scrollBy(0, arguments[0])", nomeCategoria.getLocation().y);
 	
 	
 
-	clicarBotao(By.xpath("//a[@class = 'hmenu-item' and contains(., 'Notebooks')]"));
+	clicarBotao(By.xpath("//a[@class = 'hmenu-item' and contains(., '"+nomeSubCategoria+"')]"));
 }
 
 	public void clicarBotaoVerMais() {

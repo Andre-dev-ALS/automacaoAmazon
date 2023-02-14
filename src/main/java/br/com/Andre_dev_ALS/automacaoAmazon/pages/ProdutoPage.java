@@ -30,7 +30,7 @@ public class ProdutoPage extends BasePage {
 		List<String> retorno = new ArrayList<String>();
 
 		for (WebElement produto : produtos) {
-			retorno.add(produto.getText());
+			retorno.add(produto.getText().toLowerCase());
 		}
 		return retorno;
 	}

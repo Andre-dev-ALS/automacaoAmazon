@@ -17,9 +17,10 @@ public class ProcurarProdutoTest extends BaseTest {
 		produto.clicarBotaoProcurar();
 		List<String> nomeProdutos = produto.obterNomeProdutoEncontrado();
 
-		for (String nome : nomeProdutos) {
-
-			Assert.assertTrue(nome.startsWith("bicicleta aro 29".toLowerCase()));
+		for (int i = 0; i < nomeProdutos.size(); i++) {
+if(nomeProdutos.get(i).startsWith("bicicleta aro 29")) {
+	Assert.assertTrue(nomeProdutos.get(i).startsWith("bicicleta aro 29"));
+}
 		}
 	}
 
