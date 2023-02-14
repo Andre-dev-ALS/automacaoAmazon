@@ -42,6 +42,11 @@ public class BasePage {
 		return getDriver().findElement(By.id(id)).isSelected();
 	}
 
+	public void clicarCheck(By by) {
+
+	getDriver().findElement(by).click();
+	}
+	
 	public void clicarCheck(String id) {
 		getDriver().findElement(By.id(id)).click();
 	}

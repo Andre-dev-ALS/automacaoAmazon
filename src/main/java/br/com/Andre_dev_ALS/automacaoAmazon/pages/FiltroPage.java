@@ -13,10 +13,10 @@ import br.com.Andre_dev_ALS.automacaoAmazon.core.BasePage;
 public class FiltroPage extends BasePage {
 	WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(100));
 
-	//public void filtrarMarca() {
-//wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//span[@class = 'a-size-base a-color-base' and contains(.,  'Lenovo')]/../div/label/input")));
-		//clicarCheck(By.xpath("//span[@class = 'a-size-base a-color-base' and contains(.,  'Lenovo')]/../div/label/i"));
-	//}
+	public void filtrarMarca() {
+wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//span[@class = 'a-size-base a-color-base' and contains(.,  'Lenovo')]/../div/label/input")));
+		clicarCheck(By.xpath("//span[@class = 'a-size-base a-color-base' and contains(.,  'Lenovo')]/../div/label/i"));
+	}
 	
 public void ordenarPor(String ordenar) {
 	wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id=\"s-result-sort-select\"]")));
